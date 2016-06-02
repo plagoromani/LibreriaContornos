@@ -137,30 +137,18 @@ public class BaseDatos {
          * @param valorCampo valor que le vamos a dar
          */
          
-         public void actualizar(String PrimaryKey, String columna, String valor) throws Exception{
+       public void actualizar(String ColumnaPrimaryKey, String tabla, String columna,String valorPrimaryKey,String valorCampo) {
        
                 Statement stm=null;
         try {
            stm = co.createStatement();
-            stm.executeUpdate("update datosliga set " + columna + "='" + valor + "' where idJugador=" + PrimaryKey + ";");
+            stm.executeUpdate("update "+tabla + " set " + columna + "='" + valorCampo + "' where " + ColumnaPrimaryKey + " ='" + valorPrimaryKey + "';");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
         
-        
-           public void actualizar2(String PrimaryKey, String columna, String valor) throws Exception{
-       
-                Statement stm=null;
-        try {
-           stm = co.createStatement();
-            stm.executeUpdate("update datosliga set " + columna + "=" + valor + " where idJugador=" + PrimaryKey+";");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-           }
 }
-      
         
        
          
