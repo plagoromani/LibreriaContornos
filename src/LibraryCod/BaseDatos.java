@@ -108,15 +108,11 @@ public class BaseDatos {
          * @param tabla es la tabla
          * @param valorPrimaryKey valor de la clave primaria
          */
-     
-       
-       
-        public void eliminar(String ColumnaPrimaryKey, String tabla,String valorPrimaryKey) {
-           
+         
             Statement stm=null;
         try {
             stm = co.createStatement();
-            stm.executeUpdate("delete from "+ tabla + " where " + ColumnaPrimaryKey + "='" + valorPrimaryKey + "'; ");
+            stm.executeUpdate("delete from datosliga where IdJugador=" + PrimaryKey + "; ");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -127,6 +123,8 @@ public class BaseDatos {
             }
         }
         }
+       
+       
         /**
          * Sirve para actualizar
          * @param ColumnaPrimaryKey columna del valor
