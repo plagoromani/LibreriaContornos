@@ -80,27 +80,19 @@ public class BaseDatos {
  * @param columna son los nombres de las columnas
  * @return develve la consulta
  */
-        public ResultSet consultar(String tabla, String[] columna)  {
+         public ResultSet consultar()  {
         Statement stm=null;
         ResultSet rs=null;//necesario para mostrar los results
          try {
             stm = co.createStatement();
-               String consulta="select ";
-               for (int i = 0; i < columna.length; i++) {
-             if(i==columna.length-1){
-                 consulta+=columna[i];
-             }else{
-                 consulta+=columna[i] + ",";
-             }
-               }
-               consulta+=" from " + tabla + ";";
-            rs = stm.executeQuery(consulta);
+            rs = stm.executeQuery("select * from datosliga;");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
          return rs;
 
     }
+       
         /**
          * Sirve para eliminar los datos almacenados
          * @param ColumnaPrimaryKey
