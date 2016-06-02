@@ -49,12 +49,20 @@ public class BaseDatos {
         * @param tabla es la tabla de la base para hacer la insercion
         * @param filas son los valores a insertar
         */
-        public void insertar(String IdJugador, String NomJugador, String PosicionJugador, String Dorsal, String GolesJug, String AsistenciasJug, String NomEquipo) {
+      public void insertar(String tabla,String[] filas) {
        
       Statement stm=null;
        try {
           stm= co.createStatement();
-            stm.executeUpdate("insert into datosliga values(" + IdJugador + ",'" + NomJugador + "','" + PosicionJugador + "'," + Dorsal + "," +  GolesJug + "," + AsistenciasJug + ",'" + NomEquipo + "');");
+          String consulta=" insert into " + tabla + " values ( " ;
+           for (int i = 0; i < filas.length; i++) {
+             if(i==filas.length-1){
+                 consulta+="'" + filas[i] + "');";
+             }else{
+                 consulta+="'" +filas[i] + "',";
+             }
+               }
+            stm.executeUpdate(consulta);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
